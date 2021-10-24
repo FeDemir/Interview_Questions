@@ -35,6 +35,7 @@ public class UniqueArray {
      */
     public static int[] generate(int n){
         int[] arr=new int[n];
+        
         int temp;
         for (int i = 0; i < n-1; i++) {
 
