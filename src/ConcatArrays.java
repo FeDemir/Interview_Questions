@@ -18,6 +18,9 @@ inside the method:
     }
 
     public static void main(String[] args) {
+        String str="java";
+        String[] arr=str.split(" ");
+        System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
         System.out.println(Arrays.toString(Concat("abcd".split(""),"12345".split(""))));
     }
 }
