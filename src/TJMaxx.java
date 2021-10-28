@@ -169,7 +169,7 @@ public class TJMaxx {
                 if(i.getQuantity()>1)    i.setQuantity(i.getQuantity()-1);
                 else onSaleItems.remove(i);
                 break;
-            }
+            }          //
         }
 
 
