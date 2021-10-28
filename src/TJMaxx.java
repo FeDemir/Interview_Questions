@@ -32,7 +32,7 @@ public class TJMaxx {
      */
     public void addRegularItem(Item item) {
 
-       regularItems.add(item);
+        regularItems.add(item);
     }
 
     /**
@@ -86,9 +86,9 @@ public class TJMaxx {
      * @return
      */
     public List<String> getAllItemNames() {
-        List<String> allItemNames=new LinkedList<>();
+        List<String> allItemNames=new ArrayList<>();
         for (Item i:regularItems) {
-         allItemNames.add(i.getName());
+            allItemNames.add(i.getName());
         }
         for (Item i:onSaleItems) {
             allItemNames.add(i.getName());
@@ -107,6 +107,9 @@ public class TJMaxx {
     public double getItemPrice(int catalogNumber)
     {
 
+        for (Item i:regularItems) {
+            if(i.getCatalogNumber()==catalogNumber)  return i.getPrice();
+        }
         for (Item i:onSaleItems) {
             if(i.getCatalogNumber()==catalogNumber)  return i.getPrice();
         }
@@ -152,10 +155,20 @@ public class TJMaxx {
      * @param catalogNumber
      */
     public void buyItem(int catalogNumber) {
+        for (Item i:regularItems) {
+            if(i.getCatalogNumber()==catalogNumber)  {
+
+                if(i.getQuantity()>1)i.setQuantity(i.getQuantity()-1);
+                else regularItems.remove(i);
+                break;
+            }
+        }
         for (Item i:onSaleItems) {
             if(i.getCatalogNumber()==catalogNumber)  {
-                if(i.getQuantity()>1) i.setQuantity(i.getQuantity()-1);
+
+                if(i.getQuantity()>1)    i.setQuantity(i.getQuantity()-1);
                 else onSaleItems.remove(i);
+                break;
             }
         }
 
